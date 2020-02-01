@@ -1,0 +1,198 @@
+#containerPedido {
+  width: 100%;
+  min-height: 300px;
+  max-height: 400px;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 14px 0 #212121;
+  background-color: #FFF;
+  transition: all 0.2s;
+}
+
+
+.user {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+
+.foto {
+  width: 60px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+}
+
+
+.card-user {
+  display: grid;
+}
+
+
+.nome {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  transition: all 0.2s;
+  margin-bottom: -2px;
+}
+
+.horaPedido {
+  color: #555;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.endereco {
+  color: #555;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.listaContainer {
+  overflow: auto;
+  height: 200px;
+  background-color: transparent;
+}
+
+
+.itemLista {
+  height: 35px;
+}
+
+
+.containerButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s;
+}
+
+.clock {
+  border: 1px solid rgb(211, 58, 58);
+  background-color: rgb(211, 58, 58);
+}
+
+.check {
+  border: 1px solid rgb(34, 167, 89);
+  background-color: rgb(34, 167, 89);
+}
+
+.paper {
+  border: 1px solid rgb(48, 84, 161);
+  background-color: rgb(48, 84, 161);
+}
+
+.clock:hover {
+  border: 1px solid rgb(119, 49, 49);
+  background-color: rgb(119, 49, 49);
+}
+
+.check:hover {
+  border: 1px solid rgb(33, 94, 58);
+  background-color: rgb(33, 94, 58);
+}
+
+.paper:hover {
+  border: 1px solid rgb(38, 54, 87);
+  background-color: rgb(38, 54, 87);
+}
+
+
+.headerTabela {
+  height: 30px !important;
+}
+
+
+.table td, .table th {
+  padding: 4px;
+}
+
+.table th {
+  font-size: 14px;
+}
+
+.cifrao {
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.397);
+  font-weight: 600;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+table td {
+  font-size: 14px;
+}
+
+@media (max-width: 350px) {
+
+  #containerPedido {
+    min-height: 300px;
+    max-height: 450px;
+  }
+
+  .foto {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 #777;
+    margin-right: 20px;
+  }
+
+  .nome {
+    font-size: 12px;
+    font-weight: 700;
+    color: #333;
+    transition: all 0.2s;
+    margin-bottom: -2px;
+  }
+
+  .horaPedido {
+    color: #555;
+    font-size: 10px;
+    margin-bottom: 2px;
+  }
+
+  .botao {
+    width: 35px;
+    height: 35px;
+    margin-top: 6px;
+  }
+
+  table td {
+    font-size: 12px;
+  }
+
+  .footer {
+    display: block;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 247px) {
+  .listaContainer {
+    overflow: auto;
+    height: 100px;
+    background-color: transparent;
+  }
+}
+
+
+

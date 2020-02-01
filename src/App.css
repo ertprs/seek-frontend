@@ -1,38 +1,45 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR|Work+Sans&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+html, body, #root, .container-fluid {
+  font-family: 'Noto Sans KR', sans-serif;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+html, body, #root, .container-fluid {
+  background: url('./assets//bg//2762084.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+
+
+/*======== BARRA DE ROLAGEM ========*/
+/*Responsável por escolher o tamanho e o que você vai atribuir à sua barra de rolagem*/
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
+
+/*Área que fica ao fundo da barra de rolagem, ou seja, o caminho que a barra vai percorrer*/
+::-webkit-scrollbar-track-piece {
+background-color: #FFF;
+}
+
+/*Responsável por editar como será a scrollbar na vertical do site*/
+::-webkit-scrollbar-thumb:vertical {
+height: 5px;
+background-color: #326273;
+-webkit-border-radius: 3px;
+}
+
+/*Mesma coisa do que eu falei acima, só que, ao invés de ser na vertical, é na horizontal*/
+::-webkit-scrollbar-thumb:horizontal {
+width: 5px;
+background-color: #326273;
+-webkit-border-radius: 3px;
+}
+
