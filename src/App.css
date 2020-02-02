@@ -6,11 +6,12 @@ html, body, #root, .container-fluid {
 }
 
 html, body, #root, .container-fluid {
-  background: url('./assets//bg//2762084.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
+  /* background: url('./assets//bg//2762084.jpg'); */
+  /* background-repeat: no-repeat; */
+  /* background-attachment: fixed; */
+  /* background-size: cover; */
+  /* background-position: center; */
+  background-color: #FFF;
 }
 
 

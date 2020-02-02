@@ -4,7 +4,7 @@
   max-height: 400px;
   padding: 20px;
   border-radius: 4px;
-  box-shadow: 0 0 14px 0 #212121;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
   background-color: #FFF;
   transition: all 0.2s;
 }
@@ -21,7 +21,7 @@
   width: 60px;
   height: auto;
   border-radius: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
   margin-right: 20px;
 }
 
@@ -73,41 +73,47 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.4s;
 }
 
+.botao:focus {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .clock {
-  border: 1px solid rgb(211, 58, 58);
-  background-color: rgb(211, 58, 58);
+  border: 1px solid rgb(206, 149, 75);
+  background-color: rgb(206, 149, 75);
 }
 
 .check {
-  border: 1px solid rgb(34, 167, 89);
-  background-color: rgb(34, 167, 89);
+  border: 1px solid rgb(76, 150, 82);
+  background-color: rgb(76, 150, 82);
 }
 
 .paper {
-  border: 1px solid rgb(48, 84, 161);
-  background-color: rgb(48, 84, 161);
+  border: 1px solid rgb(139, 66, 211);
+  background-color: rgb(139, 66, 211);
 }
 
 .clock:hover {
-  border: 1px solid rgb(119, 49, 49);
-  background-color: rgb(119, 49, 49);
+  border: 1px solid rgb(211, 134, 33);
+  background-color: rgb(211, 134, 33);
 }
 
 .check:hover {
-  border: 1px solid rgb(33, 94, 58);
-  background-color: rgb(33, 94, 58);
+  border: 1px solid rgb(56, 117, 61);
+  background-color: rgb(56, 117, 61);
 }
 
 .paper:hover {
-  border: 1px solid rgb(38, 54, 87);
-  background-color: rgb(38, 54, 87);
+  border: 1px solid rgb(104, 50, 158);
+  background-color: rgb(104, 50, 158);
 }
 
 
