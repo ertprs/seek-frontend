@@ -4,17 +4,25 @@ import camera from '../../../assets/camera.svg';
 
 import './Products.css';
 
-export default ({ history }) => {
-  const [image, setImage] = useState(null);
+const initialState = {
+    image: null,
+    name: '',
+    size: '', // pizzas, etc
+    price: 0,
+    ingredients: '', // Separados por vírgula
+}
 
-  const preview = useMemo(() => {
-    return image ? URL.createObjectURL(image) : null;
-  }, [image]
-  );
+export default ({ history }) => {
+  const [data, setData] = useState({ ...initialState });
+
+    const preview = useMemo(() => {
+            return data.image ? URL.createObjectURL(data.image) : null;
+        }, [data.image]
+    );
   
-  async function handleSubmit(e) {
-    e.preventDefault();
-  }
+    async function handleSubmit(e) {
+        e.preventDefault();
+    }
 
     return (
 
@@ -26,9 +34,9 @@ export default ({ history }) => {
                             <label 
                                 id="image" 
                                 style={{ backgroundImage: `url(${preview})` }}
-                                className={image ? 'has-image' : ''}
+                                className={data.image ? 'has-image' : ''}
                             >
-                                <input type="file" onChange={event => setImage(event.target.files[0])} />
+                                <input type="file" onChange={event => setData({ image: event.target.files[0] })} />
                                 <img src={camera} alt="Selecione uma imagem"/>
                             </label>
                             <input 
