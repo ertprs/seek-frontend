@@ -17,29 +17,42 @@ export default ({ history }) => {
   }
 
     return (
-        <div className="products-container">
-            <form onSubmit={handleSubmit}>
-                <label 
-                    id="image" 
-                    style={{ backgroundImage: `url(${preview})` }}
-                    className={image ? 'has-image' : ''}
-                >
-                    <input type="file" onChange={event => setImage(event.target.files[0])} />
-                    <img src={camera} alt="Selecione uma imagem"/>
-                </label>
-                <input 
-                    placeholder="Placeholder..."
-                    // value={company}
-                    // onChange={e => setCompany(e.target.value)}
-                />
-                <input 
-                    placeholder="Placeholder..."
-                    // value={price}
-                    // onChange={e => setPrice(e.target.value)}
-                />
-                <button type="submit">Cadastrar</button>
-                <button type="button" onClick={() => history.push('/dash')}>Voltar</button>
-            </form>
+
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-md-4">
+                    <div className="products-container">
+                        <form onSubmit={handleSubmit}>
+                            <label 
+                                id="image" 
+                                style={{ backgroundImage: `url(${preview})` }}
+                                className={image ? 'has-image' : ''}
+                            >
+                                <input type="file" onChange={event => setImage(event.target.files[0])} />
+                                <img src={camera} alt="Selecione uma imagem"/>
+                            </label>
+                            <input 
+                                placeholder="Nome do produto..."
+                            />
+                            <input 
+                                placeholder="Placeholder..."
+                            />
+                            <input 
+                                placeholder="Placeholder..."
+                            />
+                            <input 
+                                placeholder="Placeholder..."
+                            />
+                            <button type="submit">Cadastrar</button>
+                            <button type="button" onClick={() => history.push('/dash')}>Voltar</button>
+                        </form>
+                    </div>
+
+                </div>
+                <div className="col-md-8">
+
+                </div>
+            </div>
         </div>
     );
 }
