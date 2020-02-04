@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import 'moment/locale/pt-br';
-import formaPagamento from '../constants/FormaPagamento';
+import formaPagamento from '../../constants/FormaPagamento';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faCheckCircle, faPaperPlane, faMoneyBillWave, faCreditCard } from '@fortawesome/free-solid-svg-icons'
 
@@ -10,7 +10,7 @@ import './Seek.css';
 export default props => {
   return (
     <>
-      <div className="col-lg-4 col-md-6 mt-3 mb-3">
+      <div className="col-lg-3 col-md-4 mt-3 mb-3">
         <div id="containerPedido">
           <div className="user">
             <img className="img-fluid foto" src={props.foto} alt={props.nome}/>

@@ -11,36 +11,34 @@ html, body, #root, .container-fluid {
   /* background-attachment: fixed; */
   /* background-size: cover; */
   /* background-position: center; */
+  /* background-color: #624CAB; */
   background-color: #FFF;
 }
-
-
 
 
 
 /*======== BARRA DE ROLAGEM ========*/
 /*Responsável por escolher o tamanho e o que você vai atribuir à sua barra de rolagem*/
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-/*Área que fica ao fundo da barra de rolagem, ou seja, o caminho que a barra vai percorrer*/
-::-webkit-scrollbar-track-piece {
-background-color: #FFF;
-}
-
-/*Responsável por editar como será a scrollbar na vertical do site*/
-::-webkit-scrollbar-thumb:vertical {
-height: 5px;
-background-color: #326273;
--webkit-border-radius: 3px;
-}
-
-/*Mesma coisa do que eu falei acima, só que, ao invés de ser na vertical, é na horizontal*/
-::-webkit-scrollbar-thumb:horizontal {
-width: 5px;
-background-color: #326273;
--webkit-border-radius: 3px;
-}
-
+    width: 6px;
+    height: 6px;
+  }
+  
+  /*Área que fica ao fundo da barra de rolagem, ou seja, o caminho que a barra vai percorrer*/
+  ::-webkit-scrollbar-track-piece {
+  background-color: #FFF;
+  }
+  
+  /*Responsável por editar como será a scrollbar na vertical do site*/
+  ::-webkit-scrollbar-thumb:vertical {
+  height: 5px;
+  background-color: #326273;
+  -webkit-border-radius: 3px;
+  }
+  
+  /*Mesma coisa do que eu falei acima, só que, ao invés de ser na vertical, é na horizontal*/
+  ::-webkit-scrollbar-thumb:horizontal {
+  width: 5px;
+  background-color: #326273;
+  -webkit-border-radius: 3px;
+  }

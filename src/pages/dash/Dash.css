@@ -1,0 +1,25 @@
+.register-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-container div {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin-top: -100px;
+}
+
+.register-container div button {
+    margin-top: 20px;
+    border: 0;
+    border-radius: 4px;
+    height: 48px;
+    font-size: 16px;
+    background: #624CAB;
+    color: #fff;
+    cursor: pointer;
+}

@@ -97,8 +97,8 @@
 }
 
 .paper {
-  border: 1px solid rgb(139, 66, 211);
-  background-color: rgb(139, 66, 211);
+  border: 1px solid #624CAB;
+  background-color: #624CAB;
 }
 
 .clock:hover {

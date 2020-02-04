@@ -1,0 +1,73 @@
+.products-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.products-container form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin-top: -100px;
+}
+
+.products-container form label#image {
+    margin-bottom: 20px;
+    border: 1px dashed #ddd;
+    background-size: cover;
+    cursor: pointer;
+    height: 250px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.products-container form label#image input {
+    display: none;
+}
+
+.products-container form label#image.has-image {
+    border: 0;
+}
+
+.products-container form label#image.has-image img {
+    display: none;
+}
+
+.products-container form label img {
+    width: 30px;
+    height: 30px;
+}
+
+.products-container form img {
+    width: 300px;
+    height: auto;
+}
+
+.products-container form input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 48px;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.products-container form input::placeholder {
+    color: #999;
+}
+
+.products-container form button {
+    margin-top: 10px;
+    border: 0;
+    border-radius: 4px;
+    height: 48px;
+    font-size: 16px;
+    background: #624CAB;
+    color: #fff;
+    cursor: pointer;
+}
