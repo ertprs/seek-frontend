@@ -1,85 +1,94 @@
 // @ts-nocheck
 import React, { useState, useMemo } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import CurrencyInput from 'react-currency-input'
 import Constants from '../../../constants/Constants';
-import list from '../../../services/products'
 
+import list from '../../../services/products'
 import camera from '../../../assets/camera.svg'
 
 import './Products.css'
 
+const initialState = {
+    id: null,
+    image: null,
+    name: '',
+    ingredients: '',
+    price: 0,
+    label: Constants.CADASTRAR,
+}
+
 export default ({ history }) => {
-    const [image, setImage] = useState(null)
-    const [name, setName] = useState('')
-    const [ingredients, setIngredients] = useState('')
-    const [price, setPrice] = useState(0)
+    const [product, setProduct] = useState({ ...initialState });
     const [listProducts, setListProducts] =  useState([...list])
-    const [label, setLabel] = useState(Constants.CADASTRAR);
 
     const preview = useMemo(() => {
         try {
-            return image ? URL.createObjectURL(image) : null
+            return product.image ? URL.createObjectURL(product.image) : null
         } catch {
-            return image
+            return product.image
         }
-        }, [image]
+        }, [product.image]
     )
   
     async function handleSubmit(e) {
         e.preventDefault()
-        console.log(name, ingredients, price, image)
+        console.log(product)
     }
 
     const handleClickProduct = item => {
-        setImage(item.image)
-        setName(item.name)
-        setIngredients(item.ingredients)
-        setPrice(item.price.toFixed(2))
-        setLabel(Constants.SALVAR)
+        setProduct({ ...item, label: Constants.SALVAR })
+    }
+
+    const newProduct = () => {
+        setProduct({ ...initialState })
     }
 
     return (
-
-        <div className="container-fluid" id="products-container">
+        <div className="container-fluid bg-white">
             <div className="row">
                 <div className="col-md-4">
-                    <div>
+                    <div id="products-container">
                         <form onSubmit={handleSubmit}>
                             <label 
                                 id="image" 
                                 style={{ backgroundImage: `url(${preview})` }}
-                                className={image ? 'has-image' : ''}
+                                className={product.image ? 'has-image' : ''}
                             >
-                                <input type="file" onChange={event => setImage(event.target.files[0])} />
-                                <img src={camera} alt="Selecione uma imagem"/>
+                                <input type="file" onChange={event => setProduct({ image: event.target.files[0] })} />
+                                <img src={camera} alt="Selecione uma imagem..."/>
                             </label>
                             <input 
                                 placeholder="Nome do produto..."
-                                value={name}
-                                onChange={e => setName(e.target.value.toUpperCase())}
+                                value={product.name}
+                                onChange={e => setProduct({ name: e.target.value.toUpperCase() })}
                             />
                             <input 
                                 placeholder="Ingredientes..."
-                                value={ingredients}
-                                onChange={e => setIngredients(e.target.value.toUpperCase())}
+                                value={product.ingredients}
+                                onChange={e => setProduct({ ingredients: e.target.value.toUpperCase() })}
                             />
                             <label className="dica">Separados por vírgula</label>
                             <CurrencyInput 
                                 decimalSeparator=","
                                 thousandSeparator="."
-                                value={parseFloat(price)}
-                                onChange={e => setPrice(e.target)}
+                                value={parseFloat(product.price)}
+                                onChange={e => setProduct({ price: e.target })}
                             />
-                            <button type="submit">{label}</button>
+                            <button type="submit">{product.label}</button>
+                            {
+                                product.label === Constants.SALVAR && (
+                                    <>
+                                    <button type="button" className="btn-deletar" onClick={() => {}}>DELETAR</button>
+                                    <button type="button" className="btn-novo" onClick={() => newProduct()}>NOVO</button>
+                                    </>
+                                )
+                            }
                             <button type="button" className="btn-voltar" onClick={() => history.push('/dash')}>VOLTAR</button>
                         </form>
                     </div>
-
                 </div>
                 <div className="col-md-8">
-
+                    <h1 className="title-products">Produtos cadastrados</h1>
                     <table className="table table-striped">
                         <thead>
                             <tr>
@@ -102,7 +111,6 @@ export default ({ history }) => {
                             }
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

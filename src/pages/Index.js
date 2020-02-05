@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Seek from './seek/Seek';
 import api from '../services/api';
 
