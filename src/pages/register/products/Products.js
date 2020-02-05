@@ -54,7 +54,11 @@ export default ({ history }) => {
                                 style={{ backgroundImage: `url(${preview})` }}
                                 className={product.image ? 'has-image' : ''}
                             >
-                                <input type="file" onChange={event => setProduct({ image: event.target.files[0] })} />
+                                <input
+                                    type="file"
+                                    onChange={event =>
+                                        setProduct({ image: event.target.files[0], label: Constants.CADASTRAR })}
+                                />
                                 <img src={camera} alt="Selecione uma imagem..."/>
                             </label>
                             <input 

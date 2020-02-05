@@ -14,7 +14,7 @@ export default ({ history }) => {
 
   return (
     <div className="login-container">
-      <form onSubmit={handleSubmit} className="ml-2 mr-2">
+      <form onSubmit={handleSubmit}>
         <img src={logo} alt="Seek" className="image img-fluid" />
         <input
           placeholder="Nome de usuário..."

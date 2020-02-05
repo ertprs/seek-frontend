@@ -21,6 +21,19 @@
     background-color: #fff;
 }
 
+@media (max-width: 500px) {
+    .login-container form {
+        width: 100%;
+        max-width: 350px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
+        background-color: #fff;
+        margin: 0 5px 0 5px;
+    }
+}
+
 .login-container form img {
     width: 400px;
     height: auto;
