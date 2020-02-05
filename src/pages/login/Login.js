@@ -28,7 +28,7 @@ export default ({ history }) => {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button type="submit">Entrar</button>
+        <button type="submit">ENTRAR</button>
       </form>
     </div>
   );

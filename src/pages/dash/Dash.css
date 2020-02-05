@@ -1,11 +1,17 @@
-.register-container {
+.dash-container {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #eee;
+    /* background-image: url('../../assets//bg//restaurant.jpg'); */
+    /* background-attachment: fixed; */
+    /* background-repeat: no-repeat; */
+    /* background-position: bottom; */
+    /* background-size: cover; */
 }
 
-.register-container div {
+.dash-container div {
     width: 100%;
     max-width: 300px;
     display: flex;
@@ -13,7 +19,7 @@
     margin-top: -100px;
 }
 
-.register-container div button {
+.dash-container div button {
     margin-top: 20px;
     border: 0;
     border-radius: 4px;
@@ -22,4 +28,8 @@
     background: #624CAB;
     color: #fff;
     cursor: pointer;
+}
+
+.dash-container div button.btn-encerrar {
+    background: rgb(76, 171, 100);
 }

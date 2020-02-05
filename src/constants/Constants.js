@@ -1,4 +1,6 @@
 export default {
   CARTAO: 'CARTAO',
   DINHEIRO: 'DINHEIRO',
+  CADASTRAR: 'CADASTRAR',
+  SALVAR: 'SALVAR',
 }

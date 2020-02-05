@@ -45,6 +45,12 @@
   margin-bottom: 2px;
 }
 
+.time {
+  color: #624CAB;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
 .endereco {
   color: #555;
   font-size: 14px;
@@ -87,13 +93,13 @@
 }
 
 .clock {
-  border: 1px solid rgb(206, 149, 75);
-  background-color: rgb(206, 149, 75);
+  border: 1px solid rgb(214, 72, 69);
+  background-color: rgb(214, 72, 69);
 }
 
 .check {
-  border: 1px solid rgb(76, 150, 82);
-  background-color: rgb(76, 150, 82);
+  border: 1px solid rgb(76, 171, 100);
+  background-color: rgb(76, 171, 100);
 }
 
 .paper {
@@ -102,18 +108,18 @@
 }
 
 .clock:hover {
-  border: 1px solid rgb(211, 134, 33);
-  background-color: rgb(211, 134, 33);
+  border: 1px solid rgb(158, 36, 34);
+  background-color: rgb(158, 36, 34);
 }
 
 .check:hover {
-  border: 1px solid rgb(56, 117, 61);
-  background-color: rgb(56, 117, 61);
+  border: 1px solid rgb(48, 126, 67);
+  background-color: rgb(48, 126, 67);
 }
 
 .paper:hover {
-  border: 1px solid rgb(104, 50, 158);
-  background-color: rgb(104, 50, 158);
+  border: 1px solid rgb(65, 44, 134);
+  background-color: rgb(65, 44, 134);
 }
 
 

@@ -5,12 +5,14 @@ import './Dash.css';
 export default ({ history }) => {
 
     return (
-        <div className="register-container">
+        <div className="dash-container">
             <div className="ml-2 mr-2">
-                <button type="button" onClick={() => history.push('/panel')}>Acessar Painel</button>
-                <button type="button" onClick={() => history.push('/register/products')}>Cadastrar Produtos</button>
-                <button type="button" onClick={() => history.push('/')}>Encerrar</button>
+                <button type="button" onClick={() => history.push('/panel')}>ACESSAR PAINEL</button>
+                <button type="button" onClick={() => history.push('/register/products')}>CADASTRAR/EDITAR PRODUTOS</button>
+                <button type="button" className="btn-encerrar" onClick={() => history.push('/')}>ENCERRAR</button>
             </div>
         </div>
     );
 }
+
+// Photo by Rod Long on Unsplash

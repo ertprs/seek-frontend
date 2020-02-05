@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import 'moment/locale/pt-br';
-import formaPagamento from '../../constants/FormaPagamento';
+import formaPagamento from '../../constants/Constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faCheckCircle, faPaperPlane, faMoneyBillWave, faCreditCard } from '@fortawesome/free-solid-svg-icons'
 
 import './Seek.css';
 
 export default props => {
+  const [contTime, setContTime] = useState(moment(new Date()).format('hh:mm:ss'));
+
+  useEffect(() => {
+    scoreTime();
+  }, [])
+
+  const scoreTime = () => {
+    setInterval(() => {
+      let date = new Date()
+      setContTime(moment(date).format('HH:mm:ss'))
+    }, 1000)
+  }
+
+
   return (
     <>
-      <div className="col-lg-3 col-md-4 mt-3 mb-3">
+      <div className="col-lg-4 col-md-6 mt-3 mb-3">
         <div id="containerPedido">
           <div className="user">
             <img className="img-fluid foto" src={props.foto} alt={props.nome}/>
@@ -19,11 +33,14 @@ export default props => {
               <span className="horaPedido">
                 HORÁRIO DO PEDIDO:
                 <strong>
-                  {` ${moment(new Date(props.dataHora)).format('hh:mm')}`}
+                  {` ${moment(new Date(props.dataHora)).format('HH:mm')}`}
+                </strong> -
+                <strong className="time">
+                  {` ${contTime}`}
                 </strong>
               </span>
               <FontAwesomeIcon 
-                color={props.formaPagamento === formaPagamento.CARTAO ? 'rgb(48, 84, 161)': 'rgb(34, 167, 89)'}
+                color={props.formaPagamento === formaPagamento.CARTAO ? '#624CAB': 'rgb(76, 171, 100)'}
                 icon={props.formaPagamento === formaPagamento.CARTAO ? faCreditCard : faMoneyBillWave} />
             </div>
           </div>

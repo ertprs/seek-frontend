@@ -1,4 +1,4 @@
-import Pagamento from '../constants/FormaPagamento';
+import Pagamento from '../constants/Constants';
 
 export default [
   {
