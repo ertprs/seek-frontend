@@ -16,7 +16,7 @@ export default [
   {
     id: Math.random(),
     image: 'https://img.stpu.com.br/?img=https://s3.amazonaws.com/pu-mgr/default/a0R0f00000yVrygEAC/5b4f90ace4b01d15b4265209.jpg&w=710&h=462',
-    name: 'CACHORRO QUENTE ARTESANAL',
+    name: 'CACHORRO LOUCO',
     ingredients: 'PÃO, 2 HAMBURGUERS DE SIRI, 2 BACON, 2 OVOS, ABACAXI, TOMATE, ALFACE, AZEITONA, MILHO, MAIONESE...',
     price: 12.0,
   },

@@ -3,7 +3,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #eee;
+    background: #eee;
+    background-image: url('../../assets//bg//restaurant-branca.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
 }
 
 .login-container form {
