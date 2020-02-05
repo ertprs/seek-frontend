@@ -1,7 +1,9 @@
 #products-container {
-    height: 100vh;
+    height: auto;
+    overflow: auto;
+    padding: 20px 5px 20px 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     background-color: #fff;
 }
@@ -78,6 +80,10 @@
     cursor: pointer;
 }
 
+#products-container form button:hover {
+    background: rgb(75, 58, 129);
+}
+
 .title-products {
     font-size: 24px;
     color: #333;
@@ -94,6 +100,18 @@
 
 #products-container form button.btn-novo {
     background: rgb(93, 129, 175);
+}
+
+#products-container form button.btn-voltar:hover {
+    background: rgb(59, 131, 77);
+}
+
+#products-container form button.btn-deletar:hover {
+    background: rgb(158, 79, 79);
+}
+
+#products-container form button.btn-novo:hover {
+    background: rgb(73, 101, 138);
 }
 
 .product-item {

@@ -41,3 +41,11 @@
 .dash-container div button.btn-encerrar {
     background: rgb(76, 171, 100);
 }
+
+.dash-container div button, .button:hover {
+    background: rgb(80, 63, 138);
+}
+
+.dash-container div button.btn-encerrar:hover {
+    background: rgb(58, 129, 76);
+}
