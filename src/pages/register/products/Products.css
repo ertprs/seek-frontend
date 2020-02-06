@@ -1,123 +1,147 @@
 #products-container {
-    height: 100vh;
-    overflow: auto;
-    padding: 20px 5px 20px 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    background-color: #fff;
+  height: 100vh;
+  overflow: auto;
+  padding: 20px 5px 20px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #fff;
 }
 
 #products-container form {
-    width: 100%;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
 }
 
 #products-container form label#image {
-    margin-bottom: 20px;
-    border: 1px dashed #ddd;
-    background-size: cover;
-    cursor: pointer;
-    height: 270px;
+  margin-bottom: 20px;
+  border: 1px dashed #ddd;
+  background-size: cover;
+  cursor: pointer;
+  height: 270px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #products-container form label#image input {
-    display: none;
+  display: none;
 }
 
 #products-container form label#image.has-image {
-    border: 0;
+  border: 0;
 }
 
 #products-container form label#image.has-image img {
-    display: none;
+  display: none;
 }
 
 #products-container form label img {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 #products-container form img {
-    width: 300px;
-    height: auto;
+  width: 300px;
+  height: auto;
 }
 
 #products-container form input {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    height: 48px;
-    padding: 0 20px;
-    font-size: 16px;
-    color: #666;
-    margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 48px;
+  padding: 0 20px;
+  font-size: 16px;
+  color: #666;
+  margin-top: 10px;
 }
 
 #products-container form input::placeholder {
-    color: #999;
+  color: #999;
 }
 
 #products-container form label.dica {
-    font-size: 10px;
-    color: #777;
-    padding-left: 5px;
+  font-size: 10px;
+  color: #777;
+  padding-left: 5px;
 }
 
 #products-container form button {
-    margin-top: 10px;
-    border: 0;
-    border-radius: 4px;
-    height: 48px;
-    font-size: 16px;
-    background: #624CAB;
-    color: #fff;
-    cursor: pointer;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 4px;
+  height: 48px;
+  font-size: 16px;
+  background: #624cab;
+  color: #fff;
+  cursor: pointer;
 }
 
 #products-container form button:hover {
-    background: rgb(75, 58, 129);
+  background: rgb(75, 58, 129);
 }
 
 .title-products {
-    font-size: 24px;
-    color: #333;
-    padding: 20px 0 10px 0;
+  font-size: 24px;
+  color: #333;
+  padding: 20px 0 10px 0;
 }
 
 #products-container form button.btn-voltar {
-    background: rgb(76, 171, 100);
+  background: rgb(76, 171, 100);
 }
 
 #products-container form button.btn-deletar {
-    background: rgb(199, 99, 99);
+  background: rgb(199, 99, 99);
 }
 
 #products-container form button.btn-novo {
-    background: rgb(93, 129, 175);
+  background: rgb(93, 129, 175);
 }
 
 #products-container form button.btn-voltar:hover {
-    background: rgb(59, 131, 77);
+  background: rgb(59, 131, 77);
 }
 
 #products-container form button.btn-deletar:hover {
-    background: rgb(158, 79, 79);
+  background: rgb(158, 79, 79);
 }
 
 #products-container form button.btn-novo:hover {
-    background: rgb(73, 101, 138);
+  background: rgb(73, 101, 138);
 }
 
 .product-item {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .product-item:hover {
-    background-color: rgba(172, 195, 226, 0.288) !important;
+  background-color: rgba(172, 195, 226, 0.288) !important;
+}
+
+.listaContainer::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/*Área que fica ao fundo da barra de rolagem, ou seja, o caminho que a barra vai percorrer*/
+.listaContainer::-webkit-scrollbar-track-piece {
+  background-color: #fff;
+}
+
+/*Responsável por editar como será a scrollbar na vertical do site*/
+.listaContainer::-webkit-scrollbar-thumb:vertical {
+  height: 5px;
+  background-color: #326273;
+  -webkit-border-radius: 3px;
+}
+
+/*Mesma coisa do que eu falei acima, só que, ao invés de ser na vertical, é na horizontal*/
+.listaContainer::-webkit-scrollbar-thumb:horizontal {
+  width: 5px;
+  background-color: #326273;
+  -webkit-border-radius: 3px;
 }

@@ -1,69 +1,69 @@
 .login-container {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #eee;
-    background-image: url('../../assets//bg//restaurant-branca.jpg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+  background-image: url("../../assets//bg//restaurant-branca.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
 }
 
 .login-container form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
+  background-color: #fff;
+}
+
+@media (max-width: 500px) {
+  .login-container form {
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
     display: flex;
     flex-direction: column;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
     background-color: #fff;
-}
-
-@media (max-width: 500px) {
-    .login-container form {
-        width: 100%;
-        max-width: 350px;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
-        background-color: #fff;
-        margin: 0 5px 0 5px;
-    }
+    margin: 0 5px 0 5px;
+  }
 }
 
 .login-container form img {
-    width: 400px;
-    height: auto;
+  width: 400px;
+  height: auto;
 }
 
 .login-container form input {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    height: 48px;
-    padding: 0 20px;
-    font-size: 16px;
-    color: #666;
-    margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 48px;
+  padding: 0 20px;
+  font-size: 16px;
+  color: #666;
+  margin-top: 10px;
 }
 
 .login-container form input::placeholder {
-    color: #999;
+  color: #999;
 }
 
 .login-container form button {
-    margin-top: 10px;
-    border: 0;
-    border-radius: 4px;
-    height: 48px;
-    font-size: 16px;
-    background: #624CAB;
-    color: #fff;
-    cursor: pointer;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 4px;
+  height: 48px;
+  font-size: 16px;
+  background: #624cab;
+  color: #fff;
+  cursor: pointer;
 }
 
 .login-container form button:hover {
-    background: rgb(84, 65, 146);
+  background: rgb(84, 65, 146);
 }

@@ -1,51 +1,53 @@
 .dash-container {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background-color: #eee; */
-    background-image: url('../../assets//bg//restaurant.jpg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #eee; */
+  background-image: url("../../assets//bg//restaurant.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
 }
 
 .dash-container div {
-    width: 100%;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    margin-top: -100px;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin-top: -100px;
 }
 
-.dash-container div button, .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    border: 0;
-    border-radius: 4px;
-    height: 48px;
-    font-size: 16px;
-    background: #624CAB;
-    color: #fff;
-    cursor: pointer;
+.dash-container div button,
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border: 0;
+  border-radius: 4px;
+  height: 48px;
+  font-size: 16px;
+  background: #624cab;
+  color: #fff;
+  cursor: pointer;
 }
 
 .dash-container div a.button:hover {
-    text-decoration: none;
-    color: #FFF
+  text-decoration: none;
+  color: #fff;
 }
 
 .dash-container div button.btn-encerrar {
-    background: rgb(76, 171, 100);
+  background: rgb(76, 171, 100);
 }
 
-.dash-container div button, .button:hover {
-    background: rgb(80, 63, 138);
+.dash-container div button,
+.button:hover {
+  background: rgb(80, 63, 138);
 }
 
 .dash-container div button.btn-encerrar:hover {
-    background: rgb(58, 129, 76);
+  background: rgb(58, 129, 76);
 }

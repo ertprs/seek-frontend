@@ -1,21 +1,19 @@
 #containerPedido {
-  width: 100%;
-  min-height: 300px;
-  max-height: 400px;
+  /* width: 100%; */
+  /* min-height: 300px; */
+  /* max-height: 400px; */
   padding: 20px;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
-  background-color: #FFF;
+  background-color: #fff;
   transition: all 0.2s;
 }
-
 
 .user {
   display: flex;
   justify-content: right;
   align-items: center;
 }
-
 
 .foto {
   width: 60px;
@@ -25,11 +23,9 @@
   margin-right: 20px;
 }
 
-
 .card-user {
   display: grid;
 }
-
 
 .nome {
   font-size: 16px;
@@ -46,7 +42,7 @@
 }
 
 .time {
-  color: #624CAB;
+  color: #624cab;
   font-size: 12px;
   margin-bottom: 2px;
 }
@@ -63,11 +59,9 @@
   background-color: transparent;
 }
 
-
 .itemLista {
   height: 35px;
 }
-
 
 .containerButtons {
   display: flex;
@@ -103,8 +97,8 @@
 }
 
 .paper {
-  border: 1px solid #624CAB;
-  background-color: #624CAB;
+  border: 1px solid #624cab;
+  background-color: #624cab;
 }
 
 .clock:hover {
@@ -122,13 +116,12 @@
   background-color: rgb(65, 44, 134);
 }
 
-
 .headerTabela {
   height: 30px !important;
 }
 
-
-.table td, .table th {
+.table td,
+.table th {
   padding: 4px;
 }
 
@@ -153,7 +146,6 @@ table td {
 }
 
 @media (max-width: 350px) {
-
   #containerPedido {
     min-height: 300px;
     max-height: 450px;
@@ -195,7 +187,6 @@ table td {
     display: block;
     text-align: center;
   }
-
 }
 
 @media (max-width: 247px) {
@@ -205,6 +196,3 @@ table td {
     background-color: transparent;
   }
 }
-
-
-
