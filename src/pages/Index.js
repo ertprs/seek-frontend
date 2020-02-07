@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Container, Button, Link } from "react-floating-action-button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faReply, faPowerOff } from "@fortawesome/free-solid-svg-icons";
+import { faReply, faPowerOff, faPlus } from "@fortawesome/free-solid-svg-icons";
 import Seek from "./seek/Seek";
 import api from "../services/api";
 
@@ -14,20 +15,32 @@ export default ({ history }) => {
   }, []);
 
   return (
-    <div className="container-fluid" id="app">
-      {/* <div className="d-flex justify-content-end">
-        <button className="painel mr-2" onClick={() => history.push("/dash")}>
-          <FontAwesomeIcon color="#624CAB" icon={faReply} />
-        </button>
-        <button className="painel" onClick={() => history.push("/")}>
-          <FontAwesomeIcon color="rgb(199, 99, 99)" icon={faPowerOff} />
-        </button>
-      </div> */}
-      <div className="row">
-        {lista.map((pedido, index) => (
-          <Seek key={index} {...pedido} />
-        ))}
+    <>
+      <div className="container-fluid" id="app">
+        <div className="row">
+          {lista.map((pedido, index) => (
+            <Seek key={index} {...pedido} />
+          ))}
+        </div>
       </div>
-    </div>
+
+      <Container className="containerFloat">
+        <Link href="#" tooltip="Add user link" icon="fas fa-user-plus">
+          <FontAwesomeIcon color="#fff" icon={faPowerOff} />
+        </Link>
+        <Link href="#" tooltip="Add user link" icon="fas fa-user-plus">
+          <FontAwesomeIcon color="#fff" icon={faReply} />
+        </Link>
+        <Button
+          className="fab-item btn btn-link btn-lg text-white"
+          tooltip="The big plus button!"
+          icon="fas fa-plus"
+          rotate={true}
+          onClick={() => {}}
+        >
+          <FontAwesomeIcon color="#fff" icon={faPlus} />
+        </Button>
+      </Container>
+    </>
   );
 };
