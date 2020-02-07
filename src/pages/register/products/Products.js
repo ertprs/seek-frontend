@@ -114,7 +114,7 @@ export default ({ history }) => {
             </form>
           </div>
         </div>
-        <div className="col-md-8">
+        <div className="col-md-8 containerCadastro">
           <h1 className="title-products">Produtos cadastrados</h1>
           <div className="table-responsive">
             <table className="table table-striped">

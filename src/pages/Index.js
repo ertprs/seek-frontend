@@ -15,14 +15,14 @@ export default ({ history }) => {
 
   return (
     <div className="container-fluid" id="app">
-      <div className="d-flex justify-content-end">
+      {/* <div className="d-flex justify-content-end">
         <button className="painel mr-2" onClick={() => history.push("/dash")}>
           <FontAwesomeIcon color="#624CAB" icon={faReply} />
         </button>
         <button className="painel" onClick={() => history.push("/")}>
           <FontAwesomeIcon color="rgb(199, 99, 99)" icon={faPowerOff} />
         </button>
-      </div>
+      </div> */}
       <div className="row">
         {lista.map((pedido, index) => (
           <Seek key={index} {...pedido} />

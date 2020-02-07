@@ -196,3 +196,28 @@ table td {
     background-color: transparent;
   }
 }
+
+
+.listaContainer::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/*Área que fica ao fundo da barra de rolagem, ou seja, o caminho que a barra vai percorrer*/
+.listaContainer::-webkit-scrollbar-track-piece {
+  background-color: #fff;
+}
+
+/*Responsável por editar como será a scrollbar na vertical do site*/
+.listaContainer::-webkit-scrollbar-thumb:vertical {
+  height: 5px;
+  background-color: #624CAB;
+  -webkit-border-radius: 3px;
+}
+
+/*Mesma coisa do que eu falei acima, só que, ao invés de ser na vertical, é na horizontal*/
+.listaContainer::-webkit-scrollbar-thumb:horizontal {
+  width: 5px;
+  background-color: #624CAB;
+  -webkit-border-radius: 3px;
+}
