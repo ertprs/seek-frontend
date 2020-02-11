@@ -21,28 +21,3 @@ body,
   background-color: #eee;
 }
 
-/*======== BARRA DE ROLAGEM ========*/
-/*Responsável por escolher o tamanho e o que você vai atribuir à sua barra de rolagem*/
-html::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-/*Área que fica ao fundo da barra de rolagem, ou seja, o caminho que a barra vai percorrer*/
-html::-webkit-scrollbar-track-piece {
-  background-color: #fff;
-}
-
-/*Responsável por editar como será a scrollbar na vertical do site*/
-html::-webkit-scrollbar-thumb:vertical {
-  height: 5px;
-  background-color: #326273;
-  -webkit-border-radius: 3px;
-}
-
-/*Mesma coisa do que eu falei acima, só que, ao invés de ser na vertical, é na horizontal*/
-html::-webkit-scrollbar-thumb:horizontal {
-  width: 5px;
-  background-color: #326273;
-  -webkit-border-radius: 3px;
-}

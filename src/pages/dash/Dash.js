@@ -7,15 +7,12 @@ export default ({ history }) => {
   return (
     <div className="dash-container">
       <div className="ml-2 mr-2">
-        <Link to="/panel" className="button">
-          ACESSAR PAINEL
-        </Link>
-        <Link to="/register/products" className="button">
+        <Link to="/registrar" className="button">
           CADASTRAR/EDITAR PRODUTOS
         </Link>
-        {/* <Link to="/" className="button" >
-                    RELATÓRIOS
-                </Link> */}
+        <Link to="/relatorio" className="button" >
+          RELATÓRIOS
+        </Link>
         <button
           type="button"
           className="btn-encerrar"

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import CurrencyInput from "react-currency-input";
 import Constants from "../../../constants/Constants";
 
@@ -8,38 +8,48 @@ import camera from "../../../assets/camera.svg";
 
 import "./Products.css";
 
-const initialState = {
-  id: null,
-  image: null,
-  name: "",
-  ingredients: "",
-  price: 0,
-  label: Constants.CADASTRAR
-};
-
 export default ({ history }) => {
-  const [product, setProduct] = useState({ ...initialState });
-  const [listProducts, setListProducts] = useState([...list]);
+  const [listProducts, setListProducts] = useState([]);
+  const [image, setImage] = useState(null);
+  const [name, setName] = useState('');
+  const [ingredients, setIngredients] = useState('');
+  const [price, setPrice] = useState(0);
+  const [label, setLabel] = useState('');
+
+  useEffect(() => {
+    setListProducts([...list]);
+    setLabel(Constants.CADASTRAR);
+  }, []);
 
   const preview = useMemo(() => {
     try {
-      return product.image ? URL.createObjectURL(product.image) : null;
+      return image ? URL.createObjectURL(image) : null;
     } catch {
-      return product.image;
+      return image;
     }
-  }, [product.image]);
+  }, [image]);
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const product = { image, name, ingredients, price };
     console.log(product);
   }
 
   const handleClickProduct = item => {
-    setProduct({ ...item, label: Constants.SALVAR });
+    console.log(item);
+    setImage(item.image);
+    setName(item.name);
+    setIngredients(item.ingredients);
+    setPrice(item.price);
+    setLabel(Constants.SALVAR)
   };
 
   const newProduct = () => {
-    setProduct({ ...initialState });
+    setName('');
+    setIngredients('');
+    setPrice(0);
+    setImage(null);
+    setLabel(Constants.CADASTRAR);
   };
 
   return (
@@ -51,42 +61,33 @@ export default ({ history }) => {
               <label
                 id="image"
                 style={{ backgroundImage: `url(${preview})` }}
-                className={product.image ? "has-image" : ""}
+                className={image ? "has-image" : ""}
               >
                 <input
                   type="file"
-                  onChange={event =>
-                    setProduct({
-                      image: event.target.files[0],
-                      label: Constants.CADASTRAR
-                    })
-                  }
+                  onChange={event => setImage(event.target.files[0])}
                 />
                 <img src={camera} alt="Selecione uma imagem..." />
               </label>
               <input
                 placeholder="Nome do produto..."
-                value={product.name}
-                onChange={e =>
-                  setProduct({ name: e.target.value.toUpperCase() })
-                }
+                value={name}
+                onChange={e => setName(e.target.value)}
               />
               <input
                 placeholder="Ingredientes..."
-                value={product.ingredients}
-                onChange={e =>
-                  setProduct({ ingredients: e.target.value.toUpperCase() })
-                }
+                value={ingredients}
+                onChange={e => setIngredients(e.target.value)}
               />
               <label className="dica">Separados por vírgula</label>
               <CurrencyInput
                 decimalSeparator=","
                 thousandSeparator="."
-                value={parseFloat(product.price)}
-                onChange={e => setProduct({ price: e.target })}
+                value={parseFloat(price)}
+                onChange={e => setPrice(e.target)}
               />
-              <button type="submit">{product.label}</button>
-              {product.label === Constants.SALVAR && (
+              <button type="submit">{label}</button>
+              {label === Constants.SALVAR && (
                 <>
                   <button
                     type="button"
@@ -107,9 +108,9 @@ export default ({ history }) => {
               <button
                 type="button"
                 className="btn-voltar"
-                onClick={() => history.push("/dash")}
+                onClick={() => history.push("/inicio")}
               >
-                VOLTAR
+                VOLTAR PARA O MENU
               </button>
             </form>
           </div>

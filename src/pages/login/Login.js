@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 
 import logo from "../../assets/logo/logo.png";
@@ -9,7 +10,7 @@ export default ({ history }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    history.push("/dash");
+    history.push("/inicio");
   }
 
   return (
