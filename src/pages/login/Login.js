@@ -1,16 +1,24 @@
 // @ts-nocheck
 import React, { useState } from "react";
 
+import { login } from '../../services/auth';
+
 import logo from "../../assets/logo/logo.png";
 import "./Login.css";
 
 export default ({ history }) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    history.push("/inicio");
+    try {
+      const res = login(email, password);
+      console.log(res)
+      // history.push("/inicio");
+    } catch(error) {
+      alert('Falha ao login')
+    }
   }
 
   return (
@@ -18,10 +26,10 @@ export default ({ history }) => {
       <form onSubmit={handleSubmit}>
         <img src={logo} alt="Seek" className="image img-fluid" />
         <input
-          placeholder="Nome de usuário..."
+          placeholder="Seu e-mail..."
           type="text"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
+          value={email}
+          onChange={e => setEmail(e.target.value)}
         />
         <input
           placeholder="Sua senha secreta..."
