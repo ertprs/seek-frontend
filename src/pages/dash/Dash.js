@@ -1,22 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
 import "./Dash.css";
 
-export default ({ history }) => {
+export default ({ history, location }) => {
+  const { user } = location.state;
   return (
     <div className="dash-container">
       <div className="ml-2 mr-2">
-        <Link to="/registrar" className="button">
+        <button
+          type="button"
+          className="button"
+          onClick={() => history.push("/registrar", { user })}
+        >
           CADASTRAR/EDITAR PRODUTOS
-        </Link>
-        <Link to="/relatorio" className="button" >
+        </button>
+        <button
+          type="button"
+          className="button"
+          onClick={() => history.push("/relatorio", { user })}
+        >
           RELATÓRIOS
-        </Link>
+        </button>
         <button
           type="button"
           className="btn-encerrar"
-          onClick={() => history.push("/")}
+          onClick={() => history.push("/", { user })}
         >
           ENCERRAR
         </button>

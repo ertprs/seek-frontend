@@ -1,25 +1,29 @@
 import { api } from './api';
 
-export const isAuthenticated = () => !getToken() ? false : true;
+export function isAuthenticated() {
+    const token = getToken();
+    return token !== null && token !== undefined ? true : false;
+}
 
-export const getToken = () => {
+export function getToken() {
     return localStorage.getItem('TOKEN');
 }
 
-export const login = async (email, password) => {
+export async function login(email, password){
     try {
         const res = await api.post('/login', {
             email,
             password
         })
 
-        console.log(res)
+        return res
     } catch(error) {
         console.log(error)
     }
 }
 
-export const logout = () => {
+
+export async function logout() {
 
 }
 export default { isAuthenticated, getToken, login, logout }

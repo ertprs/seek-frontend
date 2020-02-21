@@ -1,5 +1,9 @@
 // @ts-nocheck
 import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import { useSnackbar } from 'notistack';
+import typeMessage from "../../constants/typeMessage";
 
 import { login } from '../../services/auth';
 
@@ -7,18 +11,47 @@ import logo from "../../assets/logo/logo.png";
 import "./Login.css";
 
 export default ({ history }) => {
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = login(email, password);
-      console.log(res)
-      // history.push("/inicio");
+      const { status, data } = await login(email, password);
+      if(status === 202)
+        notificacoes(data.message, typeMessage.WARNING)
+
+      if(status === 203)
+        notificacoes(data.message, typeMessage.ERROR)
+
+      if(status === 200) {
+        localStorage.setItem('TOKEN', data.token)
+        history.push("/dash", { user: data.user });
+      }
     } catch(error) {
-      alert('Falha ao login')
+      errorMessage(error)
     }
+  }
+
+  const errorMessage = (error) => {
+    console.log(error);
+    notificacoes('Falha ao buscar os produtos!', typeMessage.ERROR)
+  }
+
+  const notificacoes = (message, variant) => {
+    enqueueSnackbar(message, {
+      variant, // success, error, info, warning...
+      anchorOrigin: {
+        vertical: 'top',
+        horizontal: 'center',
+      }, // Localização em que a mensagem irá aparecer...
+      action: (
+        <button className="btn btn-default text-light" onClick={() => closeSnackbar() }>
+          <FontAwesomeIcon icon={faWindowClose} />
+        </button>
+      ),
+    });
   }
 
   return (
