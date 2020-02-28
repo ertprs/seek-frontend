@@ -7,7 +7,7 @@ import './App.css';
 export default () => 
 <SnackbarProvider 
     maxSnack={2} 
-    autoHideDuration={1300} 
+    autoHideDuration={2000} 
     dense={false}
     preventDuplicate={true}
     anchorOrigin={{vertical: 'top', horizontal: 'center'}}

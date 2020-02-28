@@ -6,6 +6,7 @@ body,
 .container-fluid {
   font-family: "Noto Sans KR", sans-serif;
   min-height: 100vh;
+  background-color: #eee;
 }
 
 html,

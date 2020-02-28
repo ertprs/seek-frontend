@@ -1,0 +1,127 @@
+div.container-fluid {
+  background-color: #f8f8f8 !important;
+}
+
+#restaurant-container {
+  height: 100vh;
+  padding: 10px 5px 10px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#restaurant-container form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+#restaurant-container form label#image {
+  margin-bottom: 10px;
+  border: 1px dashed #ddd;
+  background-size: cover;
+  cursor: pointer;
+  height: 230px;
+  width: 100%;
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#restaurant-container form label#image input {
+  display: none;
+}
+
+#restaurant-container form label#image.has-image {
+  border: 0;
+}
+
+#restaurant-container form label#image.has-image img {
+  display: none;
+}
+
+#restaurant-container form label img {
+  width: 30px;
+  height: 30px;
+}
+
+#restaurant-container form img {
+  width: 300px;
+  height: auto;
+}
+
+#restaurant-container form input {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 48px;
+  padding: 0 20px;
+  font-size: 16px;
+  color: #666;
+  margin-top: 10px;
+}
+
+#restaurant-container form input::placeholder {
+  color: #999;
+}
+
+#restaurant-container form label.dica {
+  font-size: 10px;
+  color: #777;
+  padding-left: 5px;
+}
+
+#restaurant-container form button {
+  margin-top: 10px;
+  border: 0;
+  border-radius: 4px;
+  height: 48px;
+  font-size: 16px;
+  background: #624cab;
+  color: #fff;
+  cursor: pointer;
+}
+
+#restaurant-container form button:hover {
+  background: rgb(75, 58, 129);
+}
+
+.title-products {
+  font-size: 24px;
+  color: #333;
+  padding: 20px 0 10px 0;
+}
+
+#restaurant-container form button.btn-voltar {
+  background: rgb(76, 171, 100);
+}
+
+#restaurant-container form button.btn-deletar {
+  background: rgb(199, 99, 99);
+}
+
+#restaurant-container form button.btn-novo {
+  background: rgb(93, 129, 175);
+}
+
+#restaurant-container form button.btn-voltar:hover {
+  background: rgb(59, 131, 77);
+}
+
+#restaurant-container form button.btn-deletar:hover {
+  background: rgb(158, 79, 79);
+}
+
+#restaurant-container form button.btn-novo:hover {
+  background: rgb(73, 101, 138);
+}
+
+.product-item {
+  cursor: pointer;
+}
+
+.product-item:hover {
+  background-color: rgba(172, 195, 226, 0.288) !important;
+}
+

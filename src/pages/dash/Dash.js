@@ -9,7 +9,21 @@ export default ({ history, location }) => {
         <button
           type="button"
           className="button"
-          onClick={() => history.push("/registrar", { user })}
+          onClick={() => history.push("/registrar/restaurante", { user })}
+        >
+          RESTAURANTE
+        </button>
+        <button
+          type="button"
+          className="button"
+          onClick={() => history.push("/registrar/usuario", { user })}
+        >
+          NOVO USUÁRIO
+        </button>
+        <button
+          type="button"
+          className="button"
+          onClick={() => history.push("/registrar/produtos", { user })}
         >
           CADASTRAR/EDITAR PRODUTOS
         </button>

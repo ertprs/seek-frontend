@@ -3,7 +3,6 @@ import React, { useState, useEffect, useMemo } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import { useSnackbar } from 'notistack'
-import CurrencyInput from "react-currency-input"
 import Constants from "../../../constants/Constants"
 import typeMessage from "../../../constants/typeMessage"
 
@@ -11,44 +10,35 @@ import { api } from '../../../services/api'
 
 import camera from "../../../assets/camera.svg"
 
-import "./Products.css"
+import "./User.css"
+
+const typeUser = {
+  ADMIN: 'ADMIN',
+  CLIENT: 'CLIENT'
+}
 
 export default ({ history, location }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar()
   const [item, setItem] = useState({})
-  const [listProducts, setListProducts] = useState([])
+  const [listUsers, setListUsers] = useState([])
   const [image, setImage] = useState(null)
   const [name, setName] = useState('')
-  const [ingredients, setIngredients] = useState('')
-  const [price, setPrice] = useState(0)
+  const [surname,setSurname] = useState('')
+  const [email, setEmail] = useState('')
   const [label, setLabel] = useState('')
-  const [restaurantId, setRestaurantId] = useState('')
 
-  const { user } = location.state
+  const { user } = location.state;
 
   useEffect(() => {
-    indexProducts()
-    showRestaurantUser()
+    indexUsers()
     setLabel(Constants.CADASTRAR)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const showRestaurantUser = async () => {
+  const indexUsers = async () => {
     try {
-      const { status, data } = await api.get(`/restaurant/user/${user._id}`)
-      if(status === 202)
-        notificacoes('Falha na identificação do restaurante!', typeMessage.WARNING)
-
-      setRestaurantId(data._id)
-    } catch(error) {
-      errorMessage(error)
-    }
-  }
-
-  const indexProducts = async () => {
-    try {
-      const { data } = await api.get('/product')
-      setListProducts([...data])
+      const { data } = await api.get('/user')
+      setListUsers([...data])
     } catch(error) {
       errorMessage(error)
     }
@@ -75,22 +65,30 @@ export default ({ history, location }) => {
 
   async function onRegister() {
     try{
-      const valid = isFieldsEmpty(image, name, ingredients, price, restaurantId)
+      const valid = isFieldsEmpty(image, name, surname, email)
       if(valid) {
-        const data = new FormData()
-        data.append('image', image)
-        data.append('restaurant', restaurantId)
-        data.append('name', name)
-        data.append('ingredients', ingredients)
-        data.append('price', price.replace(',', '.'))
-        await api.post('/product', data)
+        const dataUser = new FormData()
+        dataUser.append('image', image)
+        dataUser.append('email', email)
+        dataUser.append('username', `${name.toLowerCase()}_${surname.toLowerCase()}`)
+        dataUser.append('password', generateRandomPassword())
+        dataUser.append('name', name)
+        dataUser.append('surname', surname)
+        dataUser.append('typeUser', typeUser.ADMIN)
+        const { status, data } = await api.post('/user', dataUser)
+
+        if(status === 202)
+          notificacoes(data.message, typeMessage.WARNING)
+          
         // Os produtos serão atualizados atravéz de socket.io
         // A busca no banco através do método abaixo é somente
         // durante o desenvolvimento para teste
-        notificacoes('Registro salvo com sucesso!', typeMessage.SUCCESS)
-        indexProducts()
-        setLabel(Constants.CADASTRAR)
-        newProduct()
+        if(status === 200) {
+          notificacoes('Registro salvo com sucesso!', typeMessage.SUCCESS)
+          indexUsers()
+          setLabel(Constants.CADASTRAR)
+          newUser()
+        }
       }
     } catch(error) {
       errorMessage(error)
@@ -99,36 +97,31 @@ export default ({ history, location }) => {
 
   async function onUpdate() {
     try{
-      if(!item._id)
-        notificacoes('Falha ao identificar o produto!', typeMessage.ERROR)
-
-      const valid = isFieldsEmpty(image, name, ingredients, price, restaurantId)
+      const valid = isFieldsEmpty(image, name, surname, email)
       if(valid) {
-        const data = new FormData()
-        data.append('image', image)
-        data.append('name', name)
-        data.append('ingredients', ingredients)
+        const dataUser = new FormData()
+        dataUser.append('image', image)
+        dataUser.append('email', email)
+        dataUser.append('name', name)
+        dataUser.append('surname', surname)
+        dataUser.append('username', item.username)
+        dataUser.append('typeUser', typeUser.ADMIN)
 
-        let priceFormatter = null
-        if(typeof price === 'number') {
-          priceFormatter = price
-        } else if(typeof price === 'string') {
-          priceFormatter = price.replace(',', '.')
+        const { status, data } = await api.put(`/user/${item._id}`, dataUser)
+
+        if(status === 202) {
+          console.log(data.message)
+          notificacoes(data.message, typeMessage.WARNING)
         }
-        data.append('price', priceFormatter)
-        
-        const res = await api.put(`/product/${item._id}`, data)
-
-        if(res.status === 202)
-          notificacoes(res.data.message, typeMessage.ERROR)
+          
         // Os produtos serão atualizados atravéz de socket.io
         // A busca no banco através do método abaixo é somente
         // durante o desenvolvimento para teste
-        if(res.status === 200) {
-          notificacoes('Registro atualizado com sucesso!', typeMessage.SUCCESS)
-          indexProducts()
+        if(status === 200) {
+          notificacoes('Registro salvo com sucesso!', typeMessage.SUCCESS)
+          indexUsers()
           setLabel(Constants.CADASTRAR)
-          newProduct()
+          newUser()
         }
       }
     } catch(error) {
@@ -139,9 +132,9 @@ export default ({ history, location }) => {
   const onDelete = async () => {
     try {
       if(!item._id) 
-        notificacoes('O ID do produto deve ser informado!', typeMessage.WARNING)
+        notificacoes('O usuário não foi identificado!', typeMessage.WARNING)
 
-      const { status, data } = await api.delete(`/product/${item._id}`)
+      const { status, data } = await api.delete(`/user/${item._id}`)
 
       if(status === 202) 
         notificacoes(data.message, typeMessage.ERROR)
@@ -149,48 +142,53 @@ export default ({ history, location }) => {
       if(status === 200)
         notificacoes(data.message, typeMessage.SUCCESS)
 
-      newProduct()
-      indexProducts()
+      newUser()
+      indexUsers()
       setLabel(Constants.CADASTRAR)
     } catch(error) {
       errorMessage(error)
     }
   }
 
-  const isFieldsEmpty = (image, name, ingredients, price, restaurantId) => {
-    if(!image || !name || !ingredients || !price) {
+  const isFieldsEmpty = (image, name, surname, email) => {
+    if(!image || !name || !surname || !email) {
       notificacoes('Todos os campos devem ser preenchidos!', typeMessage.WARNING)
-      return false
-    }
-
-    if(!restaurantId) {
-      notificacoes('Não foi possível identificar o restaurante!', typeMessage.WARNING)
       return false
     }
 
     return true
   }
 
-  const handleClickProduct = item => {
+  const handleClickUser = item => {
     setItem({...item})
     setImage(item.image_url)
     setName(item.name)
-    setIngredients(item.ingredients)
-    setPrice(item.price)
+    setSurname(item.surname)
+    setEmail(item.email)
     setLabel(Constants.SALVAR)
   }
 
-  const newProduct = () => {
-    setName('')
-    setIngredients('')
-    setPrice(0)
+  const newUser = () => {
     setImage(null)
+    setName('')
+    setSurname('')
+    setEmail('')
     setLabel(Constants.CADASTRAR)
   }
 
   const errorMessage = (error) => {
     console.log(error)
     notificacoes('Falha na requisição!', typeMessage.ERROR)
+  }
+
+  const generateRandomPassword = () => {
+    var randomized = Math.ceil(Math.random() * Math.pow(10, 8));
+    var digito = Math.ceil(Math.log(randomized));
+    while (digito > 10) {
+      digito = Math.ceil(Math.log(digito));
+    }
+
+    return randomized;
   }
 
   const notificacoes = (message, variant) => {
@@ -209,7 +207,7 @@ export default ({ history, location }) => {
   }
 
   return (
-    <div className="container-fluid bg-white">
+    <div className="container-fluid">
       <div className="row">
         <div className="col-md-4">
           <div id="products-container">
@@ -226,21 +224,19 @@ export default ({ history, location }) => {
                 <img src={camera} alt="Selecione uma imagem..." />
               </label>
               <input
-                placeholder="Nome do produto..."
+                placeholder="Nome"
                 value={name}
                 onChange={e => setName(e.target.value.toUpperCase())}
               />
               <input
-                placeholder="Ingredientes..."
-                value={ingredients}
-                onChange={e => setIngredients(e.target.value.toUpperCase())}
+                placeholder="Sobrenome"
+                value={surname}
+                onChange={e => setSurname(e.target.value.toUpperCase())}
               />
-              <label className="dica">Separados por vírgula</label>
-              <CurrencyInput
-                decimalSeparator=","
-                thousandSeparator="."
-                value={price}
-                onChange={e =>  setPrice(e)}
+              <input
+                placeholder="E-mail"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
               />
               <button type="submit">{label}</button>
               {label === Constants.SALVAR && (
@@ -255,7 +251,7 @@ export default ({ history, location }) => {
                   <button
                     type="button"
                     className="btn-novo"
-                    onClick={() => newProduct()}
+                    onClick={() => newUser()}
                   >
                     NOVO
                   </button>
@@ -272,36 +268,32 @@ export default ({ history, location }) => {
           </div>
         </div>
         <div className="col-md-8 containerCadastro">
-          <h1 className="title-products">Produtos cadastrados</h1>
+          <h1 className="title-products">Usuários cadastrados</h1>
           <div className="table-responsive">
             <table className="table table-striped">
               <thead>
                 <tr>
-                  <th scope="col">Imagem</th>
-                  <th scope="col">Nome do produto</th>
-                  <th scope="col">Ingredientes</th>
-                  <th scope="col">Preço</th>
+                  <th scope="col">Foto</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">E-mail</th>
                 </tr>
               </thead>
               <tbody>
-                {listProducts.map((item, index) => (
+                {listUsers.map((item, index) => (
                   <tr
                     className="product-item"
                     key={index}
-                    onClick={() => handleClickProduct(item)}
+                    onClick={() => handleClickUser(item)}
                   >
                     <td className="align-middle">
                       <img
-                        style={{ width: 80, height: "auto" }}
+                        style={{ width: 40, height: "auto", borderRadius: 20 }}
                         src={item.image_url}
-                        alt={item.name}
+                        alt={`${item.name} ${item.surname}`}
                       />
                     </td>
-                    <td className="align-middle">{item.name}</td>
-                    <td className="align-middle">{item.ingredients}</td>
-                    <td className="align-middle">
-                      {String(item.price.toFixed(2)).replace(".", ",")}
-                    </td>
+                    <td className="align-middle">{`${item.name} ${item.surname}`}</td>
+                    <td className="align-middle">{item.email}</td>
                   </tr>
                 ))}
               </tbody>
@@ -311,4 +303,5 @@ export default ({ history, location }) => {
       </div>
     </div>
   )
+
 }

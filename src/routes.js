@@ -6,6 +6,8 @@ import Login from './pages/login/Login';
 import Dash from './pages/dash/Dash';
 import Relatorio from './pages/relatorio/Relatorio';
 import RegisterProducts from './pages/register/products/Products.js'
+import RegisterRestaurant from './pages/register/restaurant/Restaurant'
+import RegisterUser from './pages/register/user/User'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
@@ -26,9 +28,10 @@ export default () => {
       <Switch>
         <Route path="/" exact component={Login} />
         <PrivateRoute path="/dash" exact component={Dash} />
-        <Route path="/registrar" exact component={RegisterProducts} />
-        <Route path="/relatorio" exact component={Relatorio} />
-        {/* <Route path="/panel" component={Panel} /> */}
+        <PrivateRoute path="/registrar/produtos" exact component={RegisterProducts} />
+        <PrivateRoute path="/registrar/restaurante" exact component={RegisterRestaurant} />
+        <PrivateRoute path="/registrar/usuario" exact component={RegisterUser} />
+        <PrivateRoute path="/relatorio" exact component={Relatorio} />
       </Switch>
     </BrowserRouter>
   );
