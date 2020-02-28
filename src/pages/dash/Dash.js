@@ -3,9 +3,14 @@ import "./Dash.css";
 
 export default ({ history, location }) => {
   const { user } = location.state;
+  console.log(user)
   return (
     <div className="dash-container">
       <div className="ml-2 mr-2">
+        <div className="user mb-3">
+          <img src={user.image_url} className="image ml-3 mr-3" alt={user.username} />
+          <label className="name">{`${user.name} ${user.surname}`}</label>
+        </div>
         <button
           type="button"
           className="button"
@@ -37,7 +42,10 @@ export default ({ history, location }) => {
         <button
           type="button"
           className="btn-encerrar"
-          onClick={() => history.push("/", { user })}
+          onClick={() => {
+            localStorage.clear()
+            history.push("/")
+          }}
         >
           ENCERRAR
         </button>

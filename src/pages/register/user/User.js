@@ -210,7 +210,7 @@ export default ({ history, location }) => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-4">
-          <div id="products-container">
+          <div id="user-container">
             <form onSubmit={handleSubmit}>
               <label
                 id="image"

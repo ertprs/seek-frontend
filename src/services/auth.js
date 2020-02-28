@@ -15,7 +15,7 @@ export async function login(email, password){
             email,
             password
         })
-
+        
         return res
     } catch(error) {
         console.log(error)
