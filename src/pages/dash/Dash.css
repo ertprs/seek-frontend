@@ -16,17 +16,15 @@
   max-width: 300px;
   display: flex;
   flex-direction: column;
-  margin-top: -50px;
+  margin-top: -20px;
 }
 
 .dash-container .user {
-  display: flex;
-  flex-direction: row;
   align-items: center;
 }
 
 .dash-container .image {
-  width: 70px;
+  width: 140px;
   height: auto;
   border-radius: 50%;
 }
