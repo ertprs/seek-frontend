@@ -33,7 +33,12 @@ export default ({ history, location }) => {
 
   const showRestaurant = async () => {
     try {
-      const { status, data } = await api.get(`/restaurant/user/${user._id}`)
+      if(!user.restaurant){
+        notificacoes('Nenhum restaurante cadastrado!', typeMessage.INFO)
+        setLabel(Constants.CADASTRAR)
+        return;
+      }
+      const { status, data } = await api.get(`/restaurant/${user.restaurant}`)
       if(status === 202)
         notificacoes(data.message, typeMessage.WARNING)
 
@@ -98,6 +103,7 @@ export default ({ history, location }) => {
         // A busca no banco através do método abaixo é somente
         // durante o desenvolvimento para teste
         if(status === 200) {
+          // await api.put(`/vincule/restaurant/user/${user._id}`, data._id)
           notificacoes('Registro salvo com sucesso!', typeMessage.SUCCESS)
           setLabel(Constants.SALVAR)
         }

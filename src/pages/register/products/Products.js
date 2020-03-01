@@ -27,7 +27,6 @@ export default ({ history, location }) => {
   const { user } = location.state
 
   useEffect(() => {
-    indexProducts()
     showRestaurantUser()
     setLabel(Constants.CADASTRAR)
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,10 +34,17 @@ export default ({ history, location }) => {
 
   const showRestaurantUser = async () => {
     try {
-      const { status, data } = await api.get(`/restaurant/user/${user._id}`)
-      if(status === 202)
-        notificacoes('Falha na identificação do restaurante!', typeMessage.WARNING)
+      if(!user.restaurant) {
+        notificacoes('O restaurante ainda não foi cadastrado!', typeMessage.INFO)
+        return
+      }
 
+      const { status, data } = await api.get(`/restaurant/${user.restaurant}`)
+      if(status === 202) {
+        notificacoes('O restaurante ainda não foi cadastrado!', typeMessage.INFO)
+        return
+      }
+      indexProducts()
       setRestaurantId(data._id)
     } catch(error) {
       errorMessage(error)
@@ -47,7 +53,7 @@ export default ({ history, location }) => {
 
   const indexProducts = async () => {
     try {
-      const { data } = await api.get('/product')
+      const { data } = await api.get(`/product/restaurant/${user.restaurant}`)
       setListProducts([...data])
     } catch(error) {
       errorMessage(error)

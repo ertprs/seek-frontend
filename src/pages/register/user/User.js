@@ -37,8 +37,12 @@ export default ({ history, location }) => {
 
   const indexUsers = async () => {
     try {
-      const { data } = await api.get('/user')
-      setListUsers([...data])
+      if(user.restaurant) {
+        const { data } = await api.get(`/user/restaurant/${user.restaurant}`)
+        setListUsers([...data])
+      } else {
+        notificacoes('Cadastre o restaurante para visualizar os usuários!', typeMessage.INFO)
+      }
     } catch(error) {
       errorMessage(error)
     }
@@ -54,6 +58,8 @@ export default ({ history, location }) => {
     }
   }, [image])
 
+
+
   const handleSubmit = (e) =>{
     e.preventDefault()
     if(label === Constants.SALVAR) {
@@ -62,6 +68,8 @@ export default ({ history, location }) => {
       onRegister()
     }
   }
+
+
 
   async function onRegister() {
     try{
@@ -84,6 +92,9 @@ export default ({ history, location }) => {
         // A busca no banco através do método abaixo é somente
         // durante o desenvolvimento para teste
         if(status === 200) {
+          await api.put(`/vincule/restaurant/user/${data._id}`, {
+            restaurant: user.restaurant
+          })
           notificacoes('Registro salvo com sucesso!', typeMessage.SUCCESS)
           indexUsers()
           setLabel(Constants.CADASTRAR)
@@ -94,6 +105,8 @@ export default ({ history, location }) => {
       errorMessage(error)
     }
   }
+
+
 
   async function onUpdate() {
     try{
@@ -129,6 +142,8 @@ export default ({ history, location }) => {
     }
   }
 
+
+
   const onDelete = async () => {
     try {
       if(!item._id) 
@@ -150,6 +165,8 @@ export default ({ history, location }) => {
     }
   }
 
+
+
   const isFieldsEmpty = (image, name, surname, email) => {
     if(!image || !name || !surname || !email) {
       notificacoes('Todos os campos devem ser preenchidos!', typeMessage.WARNING)
@@ -158,6 +175,8 @@ export default ({ history, location }) => {
 
     return true
   }
+
+
 
   const handleClickUser = item => {
     setItem({...item})
@@ -168,6 +187,8 @@ export default ({ history, location }) => {
     setLabel(Constants.SALVAR)
   }
 
+
+
   const newUser = () => {
     setImage(null)
     setName('')
@@ -176,13 +197,17 @@ export default ({ history, location }) => {
     setLabel(Constants.CADASTRAR)
   }
 
+
+
   const errorMessage = (error) => {
     console.log(error)
     notificacoes('Falha na requisição!', typeMessage.ERROR)
   }
 
+
+
   const generateRandomPassword = () => {
-    var randomized = Math.ceil(Math.random() * Math.pow(10, 8));
+    var randomized = Math.ceil(Math.random() * Math.pow(10, 10));
     var digito = Math.ceil(Math.log(randomized));
     while (digito > 10) {
       digito = Math.ceil(Math.log(digito));
@@ -190,6 +215,8 @@ export default ({ history, location }) => {
 
     return randomized;
   }
+
+
 
   const notificacoes = (message, variant) => {
     enqueueSnackbar(message, {
@@ -206,6 +233,10 @@ export default ({ history, location }) => {
     })
   }
 
+
+
+
+  
   return (
     <div className="container-fluid">
       <div className="row">
