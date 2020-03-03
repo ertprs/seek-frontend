@@ -25,8 +25,11 @@
 
 .dash-container .image {
   width: 140px;
-  height: auto;
+  height: 140px;
   border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .dash-container .name {

@@ -297,10 +297,9 @@ export default ({ history, location }) => {
                     onClick={() => handleClickProduct(item)}
                   >
                     <td className="align-middle">
-                      <img
-                        style={{ width: 80, height: "auto" }}
-                        src={item.image_url}
-                        alt={item.name}
+                      <div
+                        id="image_product"
+                        style={{ backgroundImage: `url(${item.image_url})` }}
                       />
                     </td>
                     <td className="align-middle">{item.name}</td>

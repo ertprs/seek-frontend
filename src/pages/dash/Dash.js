@@ -49,12 +49,13 @@ export default ({ history, location }) => {
       ),
     });
   }
+
   
   return (
     <div className="dash-container">
       <div className="ml-2 mr-2">
         <div className="user">
-          <img src={user.image_url} className="image" alt={user.username} />
+          <div className="image" style={{ backgroundImage: `url(${user.image_url})` }} ></div>
           <label className="name mt-3">{`${user.name} ${user.surname}`}</label>
         </div>
         <button
@@ -69,14 +70,14 @@ export default ({ history, location }) => {
           className="button"
           onClick={() => history.push("/registrar/usuario", { user })}
         >
-          NOVO USUÁRIO
+          USUÁRIOS
         </button>
         <button
           type="button"
           className="button"
           onClick={() => history.push("/registrar/produtos", { user })}
         >
-          CADASTRAR/EDITAR PRODUTOS
+          PRODUTOS
         </button>
         <button
           type="button"

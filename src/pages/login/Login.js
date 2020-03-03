@@ -36,7 +36,7 @@ export default ({ history }) => {
 
   const errorMessage = (error) => {
     console.log(error);
-    notificacoes('Falha ao buscar os produtos!', typeMessage.ERROR)
+    notificacoes('Não foi possível fazer login! Entre em contato com o desenvolvedor para solucionar o problema.', typeMessage.ERROR)
   }
 
   const notificacoes = (message, variant) => {

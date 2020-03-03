@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getToken } from './auth';
 
-export const api = axios.create({ baseURL: 'http://localhost:3333' });
+export const api = axios.create({ baseURL: 'http://10.181.77.232:3333' });
 
 api.interceptors.request.use(async config => {
   const token = getToken();

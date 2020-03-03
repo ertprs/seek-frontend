@@ -18,12 +18,22 @@
   margin-bottom: 20px;
   border: 1px dashed #ddd;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
   height: 270px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#image_product {
+  width: 120px;
+  height: 80px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #products-container form label#image input {

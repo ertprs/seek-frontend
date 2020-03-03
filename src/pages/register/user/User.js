@@ -267,7 +267,7 @@ export default ({ history, location }) => {
               <input
                 placeholder="E-mail"
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value.toLowerCase())}
               />
               <button type="submit">{label}</button>
               {label === Constants.SALVAR && (
@@ -317,11 +317,7 @@ export default ({ history, location }) => {
                     onClick={() => handleClickUser(item)}
                   >
                     <td className="align-middle">
-                      <img
-                        style={{ width: 40, height: "auto", borderRadius: 20 }}
-                        src={item.image_url}
-                        alt={`${item.name} ${item.surname}`}
-                      />
+                      <div id="avatar_user" style={{ backgroundImage: `url(${item.image_url})` }}></div>
                     </td>
                     <td className="align-middle">{`${item.name} ${item.surname}`}</td>
                     <td className="align-middle">{item.email}</td>
@@ -329,7 +325,7 @@ export default ({ history, location }) => {
                 ))}
               </tbody>
             </table>
-          </div>
+          </div> 
         </div>
       </div>
     </div>
